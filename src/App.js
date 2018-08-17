@@ -11,10 +11,11 @@ import List from '@material-ui/core/List';
 import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Route } from 'react-router-dom';
 import Home from './components/main';
-
+import Stops from './components/stops';
 
 const drawerWidth = 240;
 
@@ -37,6 +38,8 @@ const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             display: 'none',
         },
+        marginLeft: -12,
+        marginRight: 20,
     },
     toolbar: theme.mixins.toolbar,
     drawerPaper: {
@@ -44,6 +47,9 @@ const styles = theme => ({
         [theme.breakpoints.up('md')]: {
             position: 'relative',
         },
+    },
+    rightIcon: {
+      marginLeft: 'auto',
     },
     content: {
         flexGrow: 1,
@@ -67,7 +73,7 @@ class App extends Component {
 
     render() {
         const { classes, theme } = this.props;
-
+        const { anchorEl } = this.state;
         const drawer = (
             <div>
                 <div className={classes.toolbar} />
@@ -122,7 +128,8 @@ class App extends Component {
                 </Hidden>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Route exact path='/' render={() => <Home livebus={this.props.livebus}/>}/>
+                    <Route exact path='/' render={() => <Home/>}/>
+                    <Route exact path='/stops' render={() => <Stops/>}/>
                 </main>
             </div>
         );

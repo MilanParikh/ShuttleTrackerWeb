@@ -4,26 +4,22 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-var xhttp = new XMLHttpRequest();
-var data = {};
-xhttp.onreadystatechange = function() {
-  if (this.readyState === 4 && this.status === 200) {
-    var response = xhttp.responseText;
-    data = JSON.parse(response);
-    ReactDOM.render(
-        <Router>
-            <App livebus={data}/>
-        </Router>,
-        document.getElementById('root'));
+const theme = createMuiTheme({
+  palette: {
+    type: 'light',
+    primary: {
+      main: '#CC0000'
+    },
   }
-}
-xhttp.open("GET", `https://www.bu.edu/bumobile/rpc/bus/livebus.json.php`, true);
-xhttp.send()
+})
 
-// ReactDOM.render(
-//     <Router>
-//         <App />
-//     </Router>,
-//     document.getElementById('root'));
-// registerServiceWorker();
+ReactDOM.render(
+    <Router>
+      <MuiThemeProvider theme={theme}>
+        <App />
+      </MuiThemeProvider>
+    </Router>,
+    document.getElementById('root'));
+//registerServiceWorker();
