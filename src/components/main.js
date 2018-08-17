@@ -36,7 +36,7 @@ export class Home extends React.Component {
         this.getStops = getStops.bind(this);
         this.getAllStops = getAllStops.bind(this);
         this.state = {
-          route: "caloop",
+          route: "day",
           routeMarkers: [],
           busMarkers: [],
           anchorEl: null,
@@ -49,7 +49,7 @@ export class Home extends React.Component {
       var _this = this;
       setInterval(function() {
         _this.getBusses();
-      }, 3000)
+      }, 5000)
     }
 
     handleClick = event => {
