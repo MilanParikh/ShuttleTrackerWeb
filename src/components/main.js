@@ -5,6 +5,7 @@ import {Map, InfoWindow, Marker,Polyline, GoogleApiWrapper} from 'google-maps-re
 import getRoute from '../utils/getRoute';
 import getBusses from '../utils/getBusses';
 import getStops from '../utils/getStops';
+import getAllStops from '../utils/getAllStops';
 import Button from '@material-ui/core/Button';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Menu from '@material-ui/core/Menu';
@@ -33,6 +34,7 @@ export class Home extends React.Component {
         super(props);
         this.getBusses = getBusses.bind(this);
         this.getStops = getStops.bind(this);
+        this.getAllStops = getAllStops.bind(this);
         this.state = {
           route: "caloop",
           routeMarkers: [],
@@ -43,7 +45,7 @@ export class Home extends React.Component {
 
     componentDidMount() {
       this.getBusses();
-      this.getStops(this.state.route);
+      this.getAllStops();
       var _this = this;
       setInterval(function() {
         _this.getBusses();
@@ -60,7 +62,6 @@ export class Home extends React.Component {
           anchorEl: null,
           route: value
         })
-        this.getStops(value)
       } else {
         this.setState({
           anchorEl: null,
@@ -89,7 +90,7 @@ export class Home extends React.Component {
               strokeWeight={2}
             />
             {this.state.busMarkers}
-            {this.state.routeMarkers}
+            {this.getStops(this.state.route)}
           </Map>
           <Button className={classes.fab} variant="extendedFab" aria-label="Route" color="primary" onClick={this.handleClick}>
             <NavigationIcon className={classes.extendedIcon} />
@@ -113,6 +114,5 @@ Home.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 export default GoogleApiWrapper({
-  apiKey: ("AIzaSyBQF9HMfqUvDciH8o6gMIv9xCFVNbsl0Y0")
+  apiKey: `${process.env.REACT_APP_GMAPS_API_KEY}`
 })(withStyles(styles)(Home))
-// export default withStyles(styles)(Home);
