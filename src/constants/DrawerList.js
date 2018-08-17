@@ -3,10 +3,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {Link, withRouter } from 'react-router-dom';
-import RestaurantIcon from '@material-ui/icons/Restaurant'
+import PinDropIcon from '@material-ui/icons/PinDrop'
 import MapIcon from '@material-ui/icons/Map';
-import HomeIcon from '@material-ui/icons/Home';
-import LocalActivityIcon from '@material-ui/icons/LocalActivity';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 class DrawerList extends React.Component {
 
@@ -19,19 +18,19 @@ class DrawerList extends React.Component {
                     <ListItemIcon>
                         <MapIcon/>
                     </ListItemIcon>
-                    <ListItemText primary='Home'/>
+                    <ListItemText primary='Map'/>
+                </ListItem>
+                <ListItem disabled={location.pathname === '/stops'} onClick={closeFunction} button component={Link} to='/stops'>
+                    <ListItemIcon>
+                        <PinDropIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary='Stops'/>
                 </ListItem>
                 <ListItem disabled={location.pathname === '/favorites'} onClick={closeFunction} button component={Link} to='/favorites'>
                     <ListItemIcon>
-                        <RestaurantIcon/>
+                        <FavoriteIcon/>
                     </ListItemIcon>
                     <ListItemText primary='Favorites'/>
-                </ListItem>
-                <ListItem disabled={location.pathname === '/other'} onClick={closeFunction} button component={Link} to='/other'>
-                    <ListItemIcon>
-                        <LocalActivityIcon/>
-                    </ListItemIcon>
-                    <ListItemText primary='Other'/>
                 </ListItem>
             </div>
         );
