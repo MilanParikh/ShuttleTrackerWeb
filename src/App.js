@@ -11,7 +11,6 @@ import List from '@material-ui/core/List';
 import Hidden from '@material-ui/core/Hidden';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Route } from 'react-router-dom';
 import Home from './components/main';
@@ -22,15 +21,14 @@ const drawerWidth = 240;
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        height: '100vh',
         zIndex: 1,
-        overflow: 'hidden',
         position: 'relative',
         display: 'flex',
         width: '100%',
+        height: '100%',
     },
     appBar: {
-        position: 'absolute',
+        position: 'fixed',
         width: '100%',
         zIndex: theme.zIndex.drawer + 1,
     },
@@ -73,7 +71,6 @@ class App extends Component {
 
     render() {
         const { classes, theme } = this.props;
-        const { anchorEl } = this.state;
         const drawer = (
             <div>
                 <div className={classes.toolbar} />

@@ -6,6 +6,8 @@ export default function getRoute(route) {
       return nightCoords;
     case "caloop":
       return caloopCoords;
+    default:
+      return 'caloopCoords';
   }
 }
 

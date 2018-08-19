@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import {Map, InfoWindow, Marker,Polyline, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Polyline, GoogleApiWrapper} from 'google-maps-react';
 import getRoute from '../utils/getRoute';
 import getBusses from '../utils/getBusses';
 import getStops from '../utils/getStops';
@@ -14,10 +14,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 const styles = theme => ({
     root: {
         display: 'flex',
+        flexGrow: 1,
+        height: '100vh',
     },
     maps: {
-      width: '100%',
-      height: '100%'
+      //width: '100%',
+      //height: '100%'
     },
     fab: {
       position: 'fixed',
@@ -41,15 +43,20 @@ export class Home extends React.Component {
           busMarkers: [],
           anchorEl: null,
         };
+        this.intervalID = null;
     }
 
     componentDidMount() {
       this.getBusses();
       this.getAllStops();
       var _this = this;
-      setInterval(function() {
+      this.intervalID = setInterval(function() {
         _this.getBusses();
       }, 5000)
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.intervalID);
     }
 
     handleClick = event => {

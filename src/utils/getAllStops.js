@@ -1,5 +1,5 @@
 import React from 'react';
-import {Map, InfoWindow, Marker,Polyline, GoogleApiWrapper} from 'google-maps-react';
+import {Marker} from 'google-maps-react';
 
 export default async function getAllStops() {
   const service_ids = ['caloop', 'lnw1', 'fall'];

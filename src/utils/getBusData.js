@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function getBusData() {
   return fetch(`https://www.bu.edu/bumobile/rpc/bus/livebus.json.php`)
     .then((response) => response.json())

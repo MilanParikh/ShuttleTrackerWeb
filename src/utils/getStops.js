@@ -1,6 +1,3 @@
-import React from 'react';
-import {Map, InfoWindow, Marker,Polyline, GoogleApiWrapper} from 'google-maps-react';
-
 export default function getStops(route) {
   switch(route) {
     case "caloop":
@@ -9,5 +6,7 @@ export default function getStops(route) {
       return this.state.nightRouteMarkers;
     case "day":
       return this.state.dayRouteMarkers;
+    default:
+      return this.state.caloopRouteMarkers;
   }
 }
