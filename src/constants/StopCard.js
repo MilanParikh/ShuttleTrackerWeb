@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import getEstimates from '../utils/getEstimates';
+var moment = require('moment');
 
 const styles = theme => ({
     card: {
@@ -26,9 +27,11 @@ class StopCard extends React.Component {
           newestEstimate: null,
           stopData: this.props.stopData,
           busData: this.props.busData,
+          time: 'Loading...'
         };
         this.getEstimates = getEstimates.bind(this);
-        this.intervalID = null
+        this.intervalID = null;
+        this.timeIntervalID = null;
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
@@ -46,6 +49,9 @@ class StopCard extends React.Component {
        var _this = this;
        this.intervalID = setInterval(function() {
          _this.getEstimates(_this.props.stopData, _this.props.busData);
+       }, 5000);
+       this.timeIntervalID = setInterval(function() {
+         _this.convertTime()
        }, 5000)
      }
 
@@ -53,17 +59,24 @@ class StopCard extends React.Component {
        clearInterval(this.intervalID);
      }
 
-     convertTime(time) {
-       //TODO: Need to fully write this... still has to get difference from estimated arrival to now and count down
-       var estimate = new Date(time);
-       var timeString = String(estimate.getHours() + ':' + estimate.getMinutes() + ':' + estimate.getSeconds());
-       return timeString
+     convertTime() {
+       if(this.state.newestEstimate == null) {
+         this.setState({
+           time: "No Estimate Available"
+         })
+       } else {
+         const estimate = moment(this.state.newestEstimate);
+         const now = moment();
+         const timeString = "Arrives " + estimate.fromNow();
+         this.setState({
+           time: timeString
+         })
+       }
      }
 
     render() {
         const { classes } = this.props;
         let { title } = this.props;
-        const estimate = String(this.state.newestEstimate);
         return (
             <Grid item xs={12} sm={6} lg={4}>
                 <Card className={classes.card}>
@@ -72,7 +85,7 @@ class StopCard extends React.Component {
                     />
                     <CardContent>
                     <Typography>
-                      {this.state.newestEstimate ? estimate : "No estimate available"}
+                      {this.state.time}
                     </Typography>
                     </CardContent>
                 </Card>
