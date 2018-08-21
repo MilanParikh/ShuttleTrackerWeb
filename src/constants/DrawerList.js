@@ -14,19 +14,19 @@ class DrawerList extends React.Component {
 
         return (
             <div>
-                <ListItem disabled={location.pathname === '/'} onClick={closeFunction} button component={Link} to='/'>
+                <ListItem disabled={location.pathname === '/ShuttleTrackerWeb'} onClick={closeFunction} button component={Link} to='/ShuttleTrackerWeb'>
                     <ListItemIcon>
                         <MapIcon/>
                     </ListItemIcon>
                     <ListItemText primary='Map'/>
                 </ListItem>
-                <ListItem disabled={location.pathname === '/stops'} onClick={closeFunction} button component={Link} to='/stops'>
+                <ListItem disabled={location.pathname === '/ShuttleTrackerWeb/stops'} onClick={closeFunction} button component={Link} to='/ShuttleTrackerWeb/stops'>
                     <ListItemIcon>
                         <PinDropIcon/>
                     </ListItemIcon>
                     <ListItemText primary='Stops'/>
                 </ListItem>
-                <ListItem disabled={location.pathname === '/favorites'} onClick={closeFunction} button component={Link} to='/favorites'>
+                <ListItem disabled={location.pathname === '/ShuttleTrackerWeb/favorites'} onClick={closeFunction} button component={Link} to='/ShuttleTrackerWeb/favorites'>
                     <ListItemIcon>
                         <FavoriteIcon/>
                     </ListItemIcon>

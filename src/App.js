@@ -128,8 +128,8 @@ class App extends Component {
                 </Hidden>
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
-                    <Route exact path='/' render={() => <Home/>}/>
-                    <Route exact path='/stops' render={() => <Stops/>}/>
+                    <Route exact path='/ShuttleTrackerWeb' render={() => <Home/>}/>
+                    <Route exact path='/ShuttleTrackerWeb/stops' render={() => <Stops/>}/>
                 </main>
             </div>
         );
