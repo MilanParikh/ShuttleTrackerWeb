@@ -15,7 +15,7 @@ export default async function getAllStops() {
         title={stop.stop_desc}
         onClick={this.onStopMarkerClick}
         icon={{
-          url: "/images/bus_stop_icon.png",
+          url: "/ShuttleTrackerWeb/images/bus_stop_icon.png",
           anchor: new this.props.google.maps.Point(16,16),
           scaledSize: new this.props.google.maps.Size(16,16)
         }}

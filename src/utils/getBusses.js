@@ -14,7 +14,7 @@ export default function getBusses() {
           onClick={this.onBusMarkerClick}
           estimates={bus.arrival_estimates}
           icon={{
-            url: "/images/bus_icon.png",
+            url: "/ShuttleTrackerWeb/images/bus_icon.png",
             anchor: new this.props.google.maps.Point(32,32),
             scaledSize: new this.props.google.maps.Size(32,32)
           }}
