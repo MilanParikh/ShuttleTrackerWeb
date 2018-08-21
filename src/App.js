@@ -42,7 +42,7 @@ const styles = theme => ({
     drawerPaper: {
         width: drawerWidth,
         [theme.breakpoints.up('md')]: {
-            position: 'fixed',
+            position: 'absolute',
         },
     },
     rightIcon: {
@@ -51,7 +51,7 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
-        width: '100vw'
+        width: 'calc(100vw)'
     },
 });
 
