@@ -20,7 +20,14 @@ const styles = theme => ({
       display: 'flex',
       flexGrow: 1,
       padding: theme.spacing.unit * 2,
-      background: theme.palette.background.default
+      background: theme.palette.background.default,
+      width: 'calc(100vw - 240)',
+      [theme.breakpoints.up('md')]: {
+          paddingLeft: 240 + theme.spacing.unit * 2
+      },
+    },
+    grid: {
+      //width: '100%'
     },
     fab: {
       position: 'fixed',
@@ -103,7 +110,7 @@ export class Stops extends React.Component {
       ))
       return(
         <div className={classes.root}>
-        <Grid container direction="row" wrap="wrap" spacing={16}>
+        <Grid className={classes.grid} container direction="row" wrap="wrap" spacing={16}>
           <Grid item xs={12}>
             <Card>
               <CardContent>

@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Route } from 'react-router-dom';
 import Home from './components/main';
 import Stops from './components/stops';
+import getLivebusPerStop from './utils/getLivebusPerStop';
 
 const drawerWidth = 240;
 
@@ -22,10 +23,8 @@ const styles = theme => ({
     root: {
         flexGrow: 1,
         zIndex: 1,
-        position: 'relative',
+        position: 'absolute',
         display: 'flex',
-        width: '100%',
-        height: '100%',
     },
     appBar: {
         position: 'fixed',
@@ -43,7 +42,7 @@ const styles = theme => ({
     drawerPaper: {
         width: drawerWidth,
         [theme.breakpoints.up('md')]: {
-            position: 'relative',
+            position: 'fixed',
         },
     },
     rightIcon: {
@@ -52,7 +51,7 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         backgroundColor: theme.palette.background.default,
-        //padding: theme.spacing.unit * 3,
+        width: '100vw'
     },
 });
 
@@ -68,6 +67,10 @@ class App extends Component {
     handleDrawerClose = () => {
         this.setState({mobileOpen: false});
     };
+
+    componentDidMount() {
+      getLivebusPerStop();
+    }
 
     render() {
         const { classes, theme } = this.props;

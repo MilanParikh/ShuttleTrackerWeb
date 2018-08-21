@@ -13,6 +13,7 @@ export default async function getAllStops() {
         key={stop.stop_id}
         name={stop.stop_name}
         title={stop.stop_desc}
+        onClick={this.onStopMarkerClick}
         icon={{
           url: "/images/bus_stop_icon.png",
           anchor: new this.props.google.maps.Point(16,16),

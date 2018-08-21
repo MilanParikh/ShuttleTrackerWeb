@@ -11,6 +11,8 @@ export default function getBusses() {
           key={bus.call_name}
           name={bus.call_name}
           title={bus.route}
+          onClick={this.onBusMarkerClick}
+          estimates={bus.arrival_estimates}
           icon={{
             url: "/images/bus_icon.png",
             anchor: new this.props.google.maps.Point(32,32),
