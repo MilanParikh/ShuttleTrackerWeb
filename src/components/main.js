@@ -18,7 +18,13 @@ const styles = theme => ({
     root: {
         display: 'flex',
         flexGrow: 1,
-        height: 'calc(100vh - 128px)',
+        height: 'calc(100vh - 112px)',
+        [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {
+          height: 'calc(100vh - 96px)',
+        },
+        [theme.breakpoints.up('sm')]: {
+          height: 'calc(100vh - 128px)',
+        },
     },
     maps: {
       width: '100%',
