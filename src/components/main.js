@@ -18,8 +18,7 @@ const styles = theme => ({
     root: {
         display: 'flex',
         flexGrow: 1,
-        height: '100vh',
-        width: '100vw'
+        height: 'calc(100vh - 128px)',
     },
     maps: {
       width: '100%',
