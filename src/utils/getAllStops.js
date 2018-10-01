@@ -2,8 +2,8 @@ import React from 'react';
 import {Marker} from 'google-maps-react';
 
 export default async function getAllStops() {
-  const service_ids = ['caloop', 'lnw1', 'fall'];
-  const routes = ['caloop', 'night', 'day'];
+  const service_ids = ['caloop', 'lnw1', 'fall', 'fen'];
+  const routes = ['caloop', 'night', 'day', 'fen'];
   for (var i = 0; i < service_ids.length; i++) {
     const response = await fetch(`https://www.bu.edu/bumobile/rpc/bus/stops.json.php?service_id=${service_ids[i]}`)
     const responsejson = await response.json();

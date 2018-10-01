@@ -6,6 +6,8 @@ export default function getStops(route) {
       return this.state.nightRouteMarkers;
     case "day":
       return this.state.dayRouteMarkers;
+    case "fen":
+      return this.state.fenRouteMarkers;
     default:
       return this.state.caloopRouteMarkers;
   }

@@ -15,7 +15,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Route } from 'react-router-dom';
 import Home from './components/main';
 import Stops from './components/stops';
-import getLivebusPerStop from './utils/getLivebusPerStop';
 
 const drawerWidth = 240;
 
@@ -69,7 +68,6 @@ class App extends Component {
     };
 
     componentDidMount() {
-      getLivebusPerStop();
     }
 
     render() {

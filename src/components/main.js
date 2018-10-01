@@ -8,6 +8,8 @@ import getStops from '../utils/getStops';
 import getAllStops from '../utils/getAllStops';
 import getStopsData from '../utils/getStopsData';
 import getStopsKeyVal from '../utils/getStopsKeyVal';
+import getAllStops2 from '../utils/getAllStops2';
+import getBusses2 from '../utils/getBusses2';
 import Button from '@material-ui/core/Button';
 import NavigationIcon from '@material-ui/icons/Navigation';
 import Menu from '@material-ui/core/Menu';
@@ -47,6 +49,8 @@ export class Home extends React.Component {
         this.getStops = getStops.bind(this);
         this.getAllStops = getAllStops.bind(this);
         this.getStopsData = getStopsData.bind(this);
+        this.getAllStops2 = getAllStops2.bind(this);
+        this.getBusses2 = getBusses2.bind(this);
         this.state = {
           route: "day",
           routeMarkers: [],
@@ -64,10 +68,13 @@ export class Home extends React.Component {
     componentDidMount() {
       this.getStopsData(this.state.route);
       this.getBusses();
+      //this.getBusses2();
       this.getAllStops();
+      this.getAllStops2();
       var _this = this;
       this.intervalID = setInterval(function() {
         _this.getBusses();
+        _this.getBusses2();
       }, 5000)
     }
 
